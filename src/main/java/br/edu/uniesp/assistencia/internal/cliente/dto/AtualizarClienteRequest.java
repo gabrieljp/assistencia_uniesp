@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 public record AtualizarClienteRequest(
 
         @NotBlank(message = "O nome é obrigatório")
-        @Size(max = 150, message = "O nome deve possuir no máximo 150 caracteres")
+        @Size(max = 150, message = "O nome deve possuir no máximo 150 caracteres....")
         String nome,
 
         @NotBlank(message = "O e-mail é obrigatório")
