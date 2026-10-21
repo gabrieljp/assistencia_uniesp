@@ -51,12 +51,12 @@ public class OrdemServicoService {
         String randomSuffix = UUID.randomUUID().toString().substring(0, 4).toUpperCase();
         String numeroProtocolo = "OS-" + dataStr + "-" + randomSuffix;
 
-        // 6. Cria a entidade e salva
+        // 6. Cria a entidade e salva (com os parâmetros na ordem correta da entidade)
         OrdemServicoEntity os = new OrdemServicoEntity(
                 numeroProtocolo,
-                request.descricaoProblema(),
                 cliente,
-                equipamento
+                equipamento,
+                request.descricaoProblema()
         );
 
         OrdemServicoEntity salva = ordemServicoRepository.save(os);
