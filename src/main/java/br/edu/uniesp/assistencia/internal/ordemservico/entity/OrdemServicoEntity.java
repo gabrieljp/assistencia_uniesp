@@ -7,6 +7,7 @@ import br.edu.uniesp.assistencia.internal.ocamento.entity.OrcamentoEntity;
 import br.edu.uniesp.assistencia.internal.tecnico.entity.TecnicoEntity;
 import br.edu.uniesp.assistencia.shared.exception.RegraNegocioException;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -82,6 +83,9 @@ public class OrdemServicoEntity {
         this.status = StatusOrdemServico.RECEBIDA;
         this.dataAbertura = LocalDateTime.now();
         adicionarHistorico(null, StatusOrdemServico.RECEBIDA, "SISTEMA", "Abertura da ordem de serviço.");
+    }
+
+    public OrdemServicoEntity(String numeroProtocolo, @NotBlank(message = "A descrição do problema é obrigatória") String s, ClienteEntity cliente, EquipamentoEntity equipamento) {
     }
 
     public void atribuirTecnico(TecnicoEntity tecnico, String responsavel) {

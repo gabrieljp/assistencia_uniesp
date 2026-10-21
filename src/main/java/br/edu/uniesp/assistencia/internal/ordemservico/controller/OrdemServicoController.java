@@ -12,11 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+
 @RestController
-@RequestMapping("/ordens")
+@RequestMapping("/api/ordens")
 @RequiredArgsConstructor
 public class OrdemServicoController {
 
     private final OrdemServicoService ordemServicoService;
 
+    @PostMapping
+    public ResponseEntity<CriarOrdemServicoResponse> criar(
+            @Valid @RequestBody CriarOrdemServicoRequest request,
+            UriComponentsBuilder uriBuilder
+    ) {
+        CriarOrdemServicoResponse response = ordemServicoService.criar(request);
+        URI uri = uriBuilder.path("/api/ordens/{id}").buildAndExpand(response.id()).toUri();
+        return ResponseEntity.created(uri).body(response);
+    }
 }
