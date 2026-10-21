@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/assistencia
+    url: jdbc:postgresql://localhost:5432/assistencia_1
     username: postgres
-    password: 123456
-
+    password: 69015588
+    driver-class-name: org.postgresql.Driver
   jpa:
     properties:
       hibernate:
